@@ -10,6 +10,7 @@
     #include <stdlib.h>
 
     int main(){
+        system("clear");
 
         int cod, nAprovado = 0, nReprovado = 0, qtsNotas;
         float nota, media = 0.0, soma = 0.0;
@@ -44,5 +45,6 @@
         printf ("O numero de aprovados é: %d\n", nAprovado);
         printf ("O numero de reprovados é: %d\n", nReprovado);
 
+        getchar();
         return 0;
     }
