@@ -57,5 +57,8 @@ int main(){
     printf ("Quantidade de pares: %d\n", nPar);
     printf ("Quantidade de impares: %d\n", nImpar);
 
+    fflush(stdin);
+    getchar();
+    system("clear");
     return 0;
 }
