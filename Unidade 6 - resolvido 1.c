@@ -11,8 +11,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-#define TAMANHO 1
+#define TAMANHO 3
 
 typedef struct
 {
@@ -51,14 +52,15 @@ void infoLivro(Livro l){
     printf ("----------------------------\n");
 }
 
-Livro buscar (int busca, int *vetor, int tamanho){
+/* Livro buscar (int busca, int *vetor, int tamanho){
     for(int i = 0; i < tamanho; i++){
     }
-}
+} */
 
 int main() {
-
-    int opcao;
+    bool achou;
+    int opcao, busca;
+    Livro volume;
     Livro livros[TAMANHO];
 
     system("reset");
@@ -100,14 +102,44 @@ int main() {
                 getchar();
                 break;
             case 3:
+                achou = false;
+                system ("clear");
+
+                printf ("Insira o código do livro a ser procurado: ");
+                scanf  ("%d", &busca);
+
+                for (int i = 0; i < TAMANHO; i++){
+
+                    if (busca == livros[i].codigo) {
+                        volume = livros[i];
+                        achou = true;
+                        break;
+                    }  
+                }
+
+                if (achou == true){
+                    infoLivro(volume);
+                }
+                else{
+                    printf ("Volume não encontrado!\n");
+                }
+                fflush(stdin);
+                getchar();
                 break;
+
             case 4:
+                //Buble Sort
+                for (int i = 0; i < TAMANHO-1; i++){
+                    for(int j = i+1; j <TAMANHO; j++)
+                    if (livros[j].ano < livros[i].ano) {
+                        volume = livros[i];
+                        livros[i] = livros[j];
+                        livros[j] = volume;
+                    }
+                }
                 break;
         }
-
         opcao = infoMenu();  
-
     }    
-
     return 0;
 }
